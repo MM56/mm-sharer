@@ -85,7 +85,7 @@ const Sharer = {
 		const width = this.DEFAULT_POPUP_SIZES.linkedIn.width;
 		const height = this.DEFAULT_POPUP_SIZES.linkedIn.height;
 
-		const link = this.getLinkedInURL(title, description, url);
+		const link = this.getLinkedInURL(url, title, description);
 
 		this.openPopup(link, width, height);
 	},
