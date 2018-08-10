@@ -1,6 +1,6 @@
 {
   "name": "@merci-michel/mm-sharer",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Merci-Michel Sharer package",
   "main": "lib/index.js",
   "scripts": {
