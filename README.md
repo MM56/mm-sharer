@@ -40,6 +40,14 @@ Returns Twitter sharing URL
 
 Opens a popup for sharing on Twitter
 
+### Sharer.getPinterestURL(media, url = '', desc = '')
+
+Returns Pinterest sharing URL
+
+### Sharer.pinterest(media, url = '', desc = '')
+
+Opens a popup for sharing on Pinterest
+
 ### Sharer.openPopup(link, width = this.DEFAULT_POPUP_SIZES.default.width, height = this.DEFAULT_POPUP_SIZES.default.height)
 
 Opens a popup
