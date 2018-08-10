@@ -25,6 +25,10 @@ const Sharer = {
 		twitter: {
 			width: 500,
 			height: 310
+		},
+		pinterest: {
+			width: 750,
+			height: 320
 		}
 	},
 
@@ -126,17 +130,58 @@ const Sharer = {
 	},
 
 	/**
+	 * Returns Pinterest sharing URL
+	 * 
+	 * @param {string} media
+	 * @param {string} url
+	 * @param {string} desc
+	 * @returns {string} Pinterest sharing URL
+	 */
+	getPinterestURL: function(media, url = '', desc = '') {
+		let link = 'https://www.pinterest.com/pin/create/button/?media=' + encodeURIComponent(media);
+		link += '&url=' + encodeURIComponent(url);
+		link += '&description=' + encodeURIComponent(desc);
+		return link;
+	},
+
+	/**
+	 * Opens a popup for sharing on Pinterest
+	 * 
+	 * @param {string} media
+	 * @param {string} url
+	 * @param {string} desc
+	 */
+	pinterest: function(media, url = '', desc = '') {
+		const width = this.DEFAULT_POPUP_SIZES.pinterest.width;
+		const height = this.DEFAULT_POPUP_SIZES.pinterest.height;
+
+		const link = this.getPinterestURL(media, url, desc);
+
+		this.openPopup(link, width, height);
+	},
+
+	/**
 	 * Opens a popup
 	 * 
 	 * @param {any} link 
 	 * @param {any} [width=this.DEFAULT_POPUP_SIZES.default.width] 
 	 * @param {any} [height=this.DEFAULT_POPUP_SIZES.default.height] 
 	 */
-	openPopup: function(link, width = this.DEFAULT_POPUP_SIZES.default.width, height = this.DEFAULT_POPUP_SIZES.default.height) {
+	openPopup: function(
+		link,
+		width = this.DEFAULT_POPUP_SIZES.default.width,
+		height = this.DEFAULT_POPUP_SIZES.default.height
+	) {
 		const left = (window.innerWidth - width) * .5;
 		const top = (window.innerHeight - height) * .5;
-		const options = 'width=' + width + ',height=' + height + ',top=' + top + ',left=' + left + ',scrollbars=1,location=0,menubar=0,resizable=0,status=0,toolbar=0';
-		window.open(link, 'twitter', options);
+		const options = [
+			'width=' + width,
+			'height=' + height,
+			'top=' + top,
+			'left=' + left,
+			'scrollbars=1,location=0,menubar=0,resizable=0,status=0,toolbar=0'
+		].join(',');
+		window.open(link, 'popupShare', options);
 	}
 
 }
